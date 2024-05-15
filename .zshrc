@@ -103,14 +103,13 @@ alias rm='safe-rm -i'
 alias chrome="google-chrome"
 alias ly="cd ~/workspace/"
 alias cls="clear"
-export workspace=~/workspace
+
 
 function setproxy() {
     local ip_address="$1" # 使用$1获取函数的第一个参数作为IP地址
-    local port="$2"
-    export http_proxy="http://${ip_address}:${port}"
-    export https_proxy="http://${ip_address}:${port}"
-    echo "Proxy set to ${ip_address}:${port}"
+    export http_proxy="http://${ip_address}:7890"
+    export https_proxy="http://${ip_address}:7890"
+    echo "Proxy set to ${ip_address}:7890"
 }
 
 # Unset proxy
@@ -120,6 +119,7 @@ function unsetproxy() {
 }
 alias unsetproxy='unsetproxy'
 alias setproxy='setproxy'
+unsetproxy
 
 export PATH="$HOME/.local/bin:$PATH"
 
