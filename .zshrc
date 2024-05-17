@@ -103,13 +103,15 @@ alias rm='safe-rm -i'
 alias chrome="google-chrome"
 alias ly="cd ~/workspace/"
 alias cls="clear"
-
+export wk=~/workspace
+export tp=~/workspace/tmp
 
 function setproxy() {
     local ip_address="$1" # 使用$1获取函数的第一个参数作为IP地址
-    export http_proxy="http://${ip_address}:7890"
-    export https_proxy="http://${ip_address}:7890"
-    echo "Proxy set to ${ip_address}:7890"
+    local port="$2"
+    export http_proxy="http://${ip_address}:${port}"
+    export https_proxy="http://${ip_address}:${port}"
+    echo "Proxy set to ${ip_address}:${port}"
 }
 
 # Unset proxy
@@ -119,10 +121,16 @@ function unsetproxy() {
 }
 alias unsetproxy='unsetproxy'
 alias setproxy='setproxy'
-unsetproxy
 
 export PATH="$HOME/.local/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export LIBGL_ALWAYS_INDIRECT=1
+export PATH="$PATH:$HOME/.local/bin"
+
+PATH="/home/l1uyun/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/l1uyun/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/l1uyun/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/l1uyun/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/l1uyun/perl5"; export PERL_MM_OPT;
